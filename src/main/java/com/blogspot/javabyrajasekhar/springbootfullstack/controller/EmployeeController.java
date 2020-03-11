@@ -34,7 +34,7 @@ public class EmployeeController {
 	@PostMapping("/createEmployee")
 	public String addEmployee(@Valid Employee emp,BindingResult bindingResult) {
 		
-		if(null !=bindingResult) {
+		if(null !=bindingResult && bindingResult.getAllErrors().size()>0) {
 			return "addEditEmployee";
 		}
 		employeeService.saveEmployee(emp);
